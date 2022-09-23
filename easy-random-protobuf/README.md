@@ -7,14 +7,6 @@
 
 Extension for [Easy Random library](https://github.com/j-easy/easy-random) adding support for [Protocol buffers](https://developers.google.com/protocol-buffers).
 
-## Maven
-```xml
-<dependency>
-    <groupId>io.github.murdos</groupId>
-    <artifactId>easy-random-protobuf</artifactId>
-    <version>0.4.0</version>
-</dependency>
-```
 
 ## Usage
 
