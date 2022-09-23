@@ -67,13 +67,11 @@ class BeanValidationTest {
 
         assertThat(bean.getSizedListEmbeddedBean().size()).isBetween(2, 10); // @Size constraint
         assertThat(bean.getSizedListEmbeddedBean())
-            .allSatisfy(
-                embeddedBean -> {
-                    assertThat(embeddedBean.getItems().size()).isBetween(11, 15);
-                    assertThat(embeddedBean.getItems())
-                        .allSatisfy(stringItem -> assertThat(stringItem.length()).isBetween(16, 20));
-                }
-            );
+            .allSatisfy(embeddedBean -> {
+                assertThat(embeddedBean.getItems().size()).isBetween(11, 15);
+                assertThat(embeddedBean.getItems())
+                    .allSatisfy(stringItem -> assertThat(stringItem.length()).isBetween(16, 20));
+            });
     }
 
     @Test
@@ -86,16 +84,14 @@ class BeanValidationTest {
 
         assertThat(bean.getSizedListEmbeddedBean().size()).isBetween(2, 10); // @Size constraint
         assertThat(bean.getSizedListEmbeddedBean())
-            .allSatisfy(
-                embeddedBean -> {
-                    assertThat(embeddedBean.getItems().size()).isBetween(11, 15);
-                    assertThat(embeddedBean.getOtherItems().size()).isBetween(3, 5); // @Size(min = 3, max = 5) constraint should take precedence over collectionSizeRange(11, 15)
-                    assertThat(embeddedBean.getItems())
-                        .allSatisfy(stringItem -> assertThat(stringItem.length()).isBetween(16, 20));
-                    assertThat(embeddedBean.getOtherItems())
-                        .allSatisfy(stringItem -> assertThat(stringItem.length()).isBetween(16, 20));
-                }
-            );
+            .allSatisfy(embeddedBean -> {
+                assertThat(embeddedBean.getItems().size()).isBetween(11, 15);
+                assertThat(embeddedBean.getOtherItems().size()).isBetween(3, 5); // @Size(min = 3, max = 5) constraint should take precedence over collectionSizeRange(11, 15)
+                assertThat(embeddedBean.getItems())
+                    .allSatisfy(stringItem -> assertThat(stringItem.length()).isBetween(16, 20));
+                assertThat(embeddedBean.getOtherItems())
+                    .allSatisfy(stringItem -> assertThat(stringItem.length()).isBetween(16, 20));
+            });
     }
 
     @Test
@@ -354,15 +350,12 @@ class BeanValidationTest {
         // then
         assertThat(discount.discountEffects)
             .isNotEmpty()
-            .allSatisfy(
-                discountEffect -> {
-                    assertThat(discountEffect).isNotNull();
-                    assertThat(discountEffect.percentage).isBetween(new BigDecimal("5.000"), new BigDecimal("10.000"));
-                    assertThat(discountEffect.quantity).isBetween(new BigDecimal("5.000"), new BigDecimal("10.000"));
-                    assertThat(discountEffect.amount.amount)
-                        .isBetween(new BigDecimal("5.000"), new BigDecimal("10.000"));
-                    assertThat(discountEffect.size).isBetween(5, 10);
-                }
-            );
+            .allSatisfy(discountEffect -> {
+                assertThat(discountEffect).isNotNull();
+                assertThat(discountEffect.percentage).isBetween(new BigDecimal("5.000"), new BigDecimal("10.000"));
+                assertThat(discountEffect.quantity).isBetween(new BigDecimal("5.000"), new BigDecimal("10.000"));
+                assertThat(discountEffect.amount.amount).isBetween(new BigDecimal("5.000"), new BigDecimal("10.000"));
+                assertThat(discountEffect.size).isBetween(5, 10);
+            });
     }
 }

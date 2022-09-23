@@ -23,10 +23,9 @@
  */
 package org.jeasy.random;
 
-import static java.util.stream.Collectors.toList;
-
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.stream.Collectors;
 import org.jeasy.random.api.RandomizerContext;
 
 /**
@@ -108,7 +107,7 @@ class RandomizationContext implements RandomizerContext {
     }
 
     private List<String> toLowerCase(final List<String> strings) {
-        return strings.stream().map(String::toLowerCase).collect(toList());
+        return strings.stream().map(String::toLowerCase).collect(Collectors.toList());
     }
 
     void setRandomizedObject(Object randomizedObject) {

@@ -25,7 +25,6 @@ package org.jeasy.random.randomizers;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
-import java.text.DecimalFormatSymbols;
 import org.jeasy.random.api.Randomizer;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -59,6 +58,15 @@ class RandomizersTest extends AbstractRandomizerTest<FakerBasedRandomizer<?>> {
         };
     }
 
+    @ParameterizedTest
+    @MethodSource("generateRandomizers")
+    void generatedNumberShouldNotBeNull(Randomizer<?> randomizer) {
+        // when
+        Object randomNumber = randomizer.getRandomValue();
+
+        then(randomNumber).isNotNull();
+    }
+
     static Object[][] generateSeededRandomizersAndTheirExpectedValues() {
         return new Object[][] {
             { new CityRandomizer(SEED), "Breannaberg" },
@@ -72,8 +80,8 @@ class RandomizersTest extends AbstractRandomizerTest<FakerBasedRandomizer<?>> {
             { new Ipv6AddressRandomizer(SEED), "b3f4:4994:c9e8:b21a:c493:e923:f711:1115" },
             { new IsbnRandomizer(SEED), "9781786075390" },
             { new LastNameRandomizer(SEED), "Durgan" },
-            { new LatitudeRandomizer(SEED), "40" + new DecimalFormatSymbols().getDecimalSeparator() + "17135654" },
-            { new LongitudeRandomizer(SEED), "80" + new DecimalFormatSymbols().getDecimalSeparator() + "34271308" },
+            { new LatitudeRandomizer(SEED), "40.17135654" },
+            { new LongitudeRandomizer(SEED), "80.34271308" },
             { new MacAddressRandomizer(SEED), "b3:f4:49:94:c9:e8" },
             {
                 new ParagraphRandomizer(SEED),
@@ -87,6 +95,15 @@ class RandomizersTest extends AbstractRandomizerTest<FakerBasedRandomizer<?>> {
             { new WordRandomizer(SEED), "repellat" },
             { new ZipCodeRandomizer(SEED), "06957" },
         };
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateSeededRandomizersAndTheirExpectedValues")
+    void shouldGenerateTheSameValueForTheSameSeed(Randomizer<?> randomizer, Object expected) {
+        //when
+        Object actual = randomizer.getRandomValue();
+
+        then(actual).isEqualTo(expected);
     }
 
     static Object[][] generateSeededRandomizersWithLocaleAndTheirExpectedValues() {
@@ -119,27 +136,9 @@ class RandomizersTest extends AbstractRandomizerTest<FakerBasedRandomizer<?>> {
     }
 
     @ParameterizedTest
-    @MethodSource("generateRandomizers")
-    void generatedNumberShouldNotBeNull(Randomizer<?> randomizer) {
-        // when
-        Object randomNumber = randomizer.getRandomValue();
-
-        then(randomNumber).isNotNull();
-    }
-
-    @ParameterizedTest
-    @MethodSource("generateSeededRandomizersAndTheirExpectedValues")
-    void shouldGenerateTheSameValueForTheSameSeed(Randomizer<?> randomizer, Object expected) {
-        // when
-        Object actual = randomizer.getRandomValue();
-
-        then(actual).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
     @MethodSource("generateSeededRandomizersWithLocaleAndTheirExpectedValues")
     void shouldGenerateTheSameValueForTheSameSeedForSameLocale(Randomizer<?> randomizer, Object expected) {
-        // when
+        //when
         Object actual = randomizer.getRandomValue();
 
         then(actual).isEqualTo(expected);

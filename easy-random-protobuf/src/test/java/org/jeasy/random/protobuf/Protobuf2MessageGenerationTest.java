@@ -99,14 +99,12 @@ class Protobuf2MessageGenerationTest {
 
         assertThat(protoInstance.hasEmbeddedMessage()).isTrue();
         assertThat(protoInstance.getEmbeddedMessage())
-            .satisfies(
-                embeddedMessage -> {
-                    assertThat(embeddedMessage.getStringField()).isEqualTo("LRHCsQ");
-                    assertThat(embeddedMessage.getEnumField()).isEqualTo(Proto2Enum.THIRD_VALUE);
-                }
-            );
+            .satisfies(embeddedMessage -> {
+                assertThat(embeddedMessage.getStringField()).isEqualTo("LRHCsQ");
+                assertThat(embeddedMessage.getEnumField()).isEqualTo(Proto2Enum.THIRD_VALUE);
+            });
         assertThat(protoInstance.getOneofFieldCase().getNumber())
-            .isNotEqualTo(Proto2Message.OneofFieldCase.ONEOFFIELD_NOT_SET);
+            .isNotEqualTo(Proto2Message.OneofFieldCase.ONEOFFIELD_NOT_SET.getNumber());
         assertThat(protoInstance.getMapFieldMap())
             .hasSize(4)
             .containsEntry(
