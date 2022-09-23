@@ -22,6 +22,7 @@
 Active
 
 ## Latest news
+* 9/23/2022 6.1.1 Added support to generate random protobuf data, this is based on murdos/easy-random-protobuf 
 * 8/3/2022: Added support to JDK 16 and Java Record and minor bug fixes
 * 15/11/2020: Easy Random v5.0.0 is out and is now based on Java 11. Feature wise, this release is the same as v4.3.0. Please check the [release notes](https://github.com/j-easy/easy-random/releases/tag/easy-random-5.0.0) for more details.
 * 07/11/2020: Easy Random v4.3.0 is now released with support for generic types and fluent setters! You can find all details in the [change log](https://github.com/j-easy/easy-random/releases/tag/easy-random-4.3.0).
