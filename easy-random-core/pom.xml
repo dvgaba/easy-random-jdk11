@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+    <groupId>io.github.dvgaba</groupId>
+    <artifactId>easy-random-jdk11</artifactId>
+    <version>6.1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
   <artifactId>easy-random-core-jdk11</artifactId>
+
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <groupId>org.apache.maven.plugins</groupId>
       </plugin>
       <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
         <groupId>org.apache.maven.plugins</groupId>
-      </plugin>
-      <plugin>
         <artifactId>maven-release-plugin</artifactId>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -24,42 +32,44 @@
     <system>Github Actions</system>
     <url>https://github.com/j-easy/easy-random/actions</url>
   </ciManagement>
+
   <dependencies>
     <dependency>
-      <artifactId>objenesis</artifactId>
-      <groupId>org.objenesis</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>classgraph</artifactId>
       <groupId>io.github.classgraph</groupId>
+      <artifactId>classgraph</artifactId>
     </dependency>
     <dependency>
-      <artifactId>junit-jupiter</artifactId>
-      <groupId>org.junit.jupiter</groupId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <artifactId>assertj-core</artifactId>
       <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <groupId>org.mockito</groupId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <artifactId>mockito-junit-jupiter</artifactId>
       <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.objenesis</groupId>
+      <artifactId>objenesis</artifactId>
     </dependency>
   </dependencies>
   <description>Easy Random core implementation</description>
+
   <developers>
     <developer>
-      <email>mahmoud.benhassine@icloud.com</email>
       <id>benas</id>
       <name>Mahmoud Ben Hassine</name>
+      <email>mahmoud.benhassine@icloud.com</email>
       <roles>
         <role>Lead developer</role>
       </roles>
@@ -78,16 +88,7 @@
       <url>http://opensource.org/licenses/mit-license.php</url>
     </license>
   </licenses>
-
-  <modelVersion>4.0.0</modelVersion>
-
   <name>Easy Random Core</name>
-
-  <parent>
-    <artifactId>easy-random-jdk11</artifactId>
-    <groupId>io.github.dvgaba</groupId>
-    <version>6.1.0-SNAPSHOT</version>
-  </parent>
 
   <scm>
     <connection>scm:git:git@github.com:j-easy/easy-random.git</connection>
@@ -95,7 +96,5 @@
     <tag>HEAD</tag>
     <url>git@github.com:j-easy/easy-random.git</url>
   </scm>
-
   <url>https://github.com/j-easy/easy-random</url>
-
 </project>

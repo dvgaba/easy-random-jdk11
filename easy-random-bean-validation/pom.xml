@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+    <groupId>io.github.dvgaba</groupId>
+    <artifactId>easy-random-jdk11</artifactId>
+    <version>6.1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
   <artifactId>easy-random-bean-validation-jdk11</artifactId>
+
   <ciManagement>
     <system>Github Actions</system>
     <url>https://github.com/j-easy/easy-random/actions</url>
@@ -10,46 +18,48 @@
 
   <dependencies>
     <dependency>
-      <artifactId>easy-random-randomizers-jdk11</artifactId>
       <groupId>io.github.dvgaba</groupId>
+      <artifactId>easy-random-randomizers-jdk11</artifactId>
     </dependency>
     <dependency>
-      <artifactId>validation-api</artifactId>
       <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
     </dependency>
     <dependency>
-      <artifactId>hibernate-validator</artifactId>
-      <groupId>org.hibernate.validator</groupId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <artifactId>javax.el</artifactId>
-      <groupId>org.glassfish</groupId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <artifactId>junit-jupiter</artifactId>
-      <groupId>org.junit.jupiter</groupId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <artifactId>assertj-core</artifactId>
       <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.el</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
   <description>Easy Random module for Bean Validation API support</description>
+
   <developers>
     <developer>
-      <email>mahmoud.benhassine@icloud.com</email>
       <id>benas</id>
       <name>Mahmoud Ben Hassine</name>
+      <email>mahmoud.benhassine@icloud.com</email>
       <roles>
         <role>Lead developer</role>
       </roles>
       <url>http://benas.github.io</url>
     </developer>
   </developers>
+
   <issueManagement>
     <system>GitHub</system>
     <url>https://github.com/j-easy/easy-random</url>
@@ -61,16 +71,7 @@
       <url>http://opensource.org/licenses/mit-license.php</url>
     </license>
   </licenses>
-
-  <modelVersion>4.0.0</modelVersion>
-
   <name>Easy Random Bean Validation</name>
-
-  <parent>
-    <artifactId>easy-random-jdk11</artifactId>
-    <groupId>io.github.dvgaba</groupId>
-    <version>6.1.0-SNAPSHOT</version>
-  </parent>
 
   <scm>
     <connection>scm:git:git@github.com:j-easy/easy-random.git</connection>
@@ -78,7 +79,5 @@
     <tag>HEAD</tag>
     <url>git@github.com:j-easy/easy-random.git</url>
   </scm>
-
   <url>https://github.com/j-easy/easy-random</url>
-
 </project>
