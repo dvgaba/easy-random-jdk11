@@ -135,13 +135,11 @@ class FieldPopulatorTest {
         final Human[] currentObjectFromContext = new Human[1];
         when(randomizerProvider.getRandomizerByField(name, context)).thenReturn(contextAwareRandomizer);
         when(contextAwareRandomizer.getRandomValue()).thenReturn(NAME);
-        doAnswer(
-                invocationOnMock -> {
-                    currentObjectFromContext[0] =
-                        (Human) invocationOnMock.getArgument(0, RandomizationContext.class).getCurrentObject();
-                    return null;
-                }
-            )
+        doAnswer(invocationOnMock -> {
+                currentObjectFromContext[0] =
+                    (Human) invocationOnMock.getArgument(0, RandomizationContext.class).getCurrentObject();
+                return null;
+            })
             .when(contextAwareRandomizer)
             .setRandomizerContext(context);
 

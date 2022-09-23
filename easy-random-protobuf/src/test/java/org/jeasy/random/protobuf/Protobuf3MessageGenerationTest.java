@@ -61,12 +61,10 @@ class Protobuf3MessageGenerationTest {
 
         assertThat(protoInstance.hasEmbeddedMessage()).isTrue();
         assertThat(protoInstance.getEmbeddedMessage())
-            .satisfies(
-                embeddedMessage -> {
-                    assertThat(embeddedMessage.getStringField()).isNotBlank();
-                    assertThat(embeddedMessage.getEnumField()).isIn((Object[]) Proto3Enum.values());
-                }
-            );
+            .satisfies(embeddedMessage -> {
+                assertThat(embeddedMessage.getStringField()).isNotBlank();
+                assertThat(embeddedMessage.getEnumField()).isIn((Object[]) Proto3Enum.values());
+            });
         assertThat(protoInstance.getOneofFieldCase()).isNotEqualTo(Proto3Message.OneofFieldCase.ONEOFFIELD_NOT_SET);
         assertThat(protoInstance.getMapFieldMap()).isNotEmpty();
     }
@@ -146,12 +144,10 @@ class Protobuf3MessageGenerationTest {
 
         assertThat(protoInstance.hasEmbeddedMessage()).isTrue();
         assertThat(protoInstance.getEmbeddedMessage())
-            .satisfies(
-                embeddedMessage -> {
-                    assertThat(embeddedMessage.getStringField()).isEqualTo("LRHCsQ");
-                    assertThat(embeddedMessage.getEnumField()).isEqualTo(Proto3Enum.UNKNOWN);
-                }
-            );
+            .satisfies(embeddedMessage -> {
+                assertThat(embeddedMessage.getStringField()).isEqualTo("LRHCsQ");
+                assertThat(embeddedMessage.getEnumField()).isEqualTo(Proto3Enum.UNKNOWN);
+            });
         assertThat(protoInstance.getOneofFieldCase()).isEqualTo(Proto3Message.OneofFieldCase.FIRSTCHOICE);
         assertThat(protoInstance.getMapFieldMap())
             .hasSize(4)
@@ -191,12 +187,10 @@ class Protobuf3MessageGenerationTest {
 
         assertThat(firstInstance.hasEmbeddedMessage()).isTrue();
         assertThat(firstInstance.getEmbeddedMessage())
-            .satisfies(
-                embeddedMessage -> {
-                    assertThat(embeddedMessage.getStringField())
-                        .isNotEqualTo(secondInstance.getEmbeddedMessage().getStringField());
-                }
-            );
+            .satisfies(embeddedMessage -> {
+                assertThat(embeddedMessage.getStringField())
+                    .isNotEqualTo(secondInstance.getEmbeddedMessage().getStringField());
+            });
         assertThat(firstInstance.getMapFieldMap()).isNotEqualTo(secondInstance.getMapFieldMap());
     }
 
