@@ -26,10 +26,10 @@ package org.jeasy.random.protobuf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.protobuf.StringValue;
-import org.jeasy.random.protobuf.testing.proto3.Proto3Enum;
-import org.jeasy.random.protobuf.testing.proto3.Proto3Message;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
+import org.jeasy.random.protobuf.testing.proto3.Proto3Enum;
+import org.jeasy.random.protobuf.testing.proto3.Proto3Message;
 import org.junit.jupiter.api.Test;
 
 class Protobuf3MessageBuilderGenerationTest {
