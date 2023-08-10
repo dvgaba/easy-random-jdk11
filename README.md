@@ -9,7 +9,7 @@
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/dvgaba/easy-random/actions/workflows/maven.yml/badge.svg)](https://github.com/dvgaba/easy-random/actions/workflows/maven.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.dvgaba/easy-random-core/badge.svg?style=flat)](https://repo1.maven.org/maven2/io/github/dvgaba/easy-random-core-jdk11/6.1.1/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.dvgaba/easy-random-core/badge.svg?style=flat)](https://repo1.maven.org/maven2/io/github/dvgaba/easy-random-core/6.1.1/)
 [![Javadocs](https://www.javadoc.io/badge/io.github.dvgaba/easy-random-core.svg)](https://www.javadoc.io/doc/io.github.dvgaba/easy-random-core)
 [![Project status](https://img.shields.io/badge/Project%20status-active-darkgreen.svg)](https://img.shields.io/badge/Project%20status-active-darkgreen.svg)
 
@@ -22,7 +22,14 @@
 Active
 
 ## Latest news
-* 9/23/2022 6.1.1 Added support to generate random protobuf data, this is based on murdos/easy-random-protobuf 
+* 8/10/2023 6.2.0 Minor release to add custom radomizer support for protobuf, 3PP and code refactoring.  
+* 5/23/2023 6.1.8 Patch release to fix [#26](https://github.com/dvgaba/easy-random/issues/26) and [#28](https://github.com/dvgaba/easy-random/issues/28), thanks @[carborgar](https://github.com/carborgar).
+* 5/12/2023 6.1.7 Patch release to improve record support, thanks @[mjureczko](https://github.com/mjureczko) and minor 3PP fixes.
+* 3/19/2023 6.1.5 Patch release to bump protobuf-java and snakeyaml and fix bug preventing custom randomizers on Record Types. Thanks [carborgar](https://github.com/carborgar)
+* 3/12/2023 6.1.3 Patch release to fix bug preventing Collections field population
+* 10/29/2022 6.1.2 Patch release to bump protobuf version to vulnerability
+* 9/23/2022 6.1.1 Added support to generate random protobuf data, this is based on [murdos/easy-random-protobuf](https://github.com/murdos/easy-random-protobuf)
+* 8/10/2022 Added a fork with JDK 11 support [easy-random-jdk11](https://github.com/dvgaba/easy-random-jdk11) package is available in maven centeral. 
 * 8/3/2022: Added support to JDK 16 and Java Record and minor bug fixes
 * 15/11/2020: Easy Random v5.0.0 is out and is now based on Java 11. Feature wise, this release is the same as v4.3.0. Please check the [release notes](https://github.com/j-easy/easy-random/releases/tag/easy-random-5.0.0) for more details.
 * 07/11/2020: Easy Random v4.3.0 is now released with support for generic types and fluent setters! You can find all details in the [change log](https://github.com/j-easy/easy-random/releases/tag/easy-random-4.3.0).
@@ -89,6 +96,14 @@ The static methods `named`, `ofType` and `inClass` are defined in [`org.jeasy.ra
 which provides common predicates you can use in combination to define exactly which fields to exclude.
 A similar class called [`TypePredicates`](https://github.com/j-easy/easy-random/blob/master/easy-random-core/src/main/java/org/jeasy/random/TypePredicates.java) can be used to define which types to exclude from the object graph.
 You can of course use your own `java.util.function.Predicate` in combination with those predefined predicates. 
+
+#Easy Random for Protobuf
+easy-random-protobuf module provides support for generating random data for protobuf message objects. 
+For full support for easy-random capabilities it is advised to rely on 
+```java
+ProtoEasyRandom easyRanom  = new ProtoEasyRandom();
+```
+
 
 # Why Easy Random ?
 

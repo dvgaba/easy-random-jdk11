@@ -92,7 +92,8 @@ class RandomizationContext implements RandomizerContext {
         return String.join(".", toLowerCase(pathToField));
     }
 
-    boolean hasExceededRandomizationDepth() {
+    @Override
+    public boolean hasExceededRandomizationDepth() {
         int currentRandomizationDepth = stack.size();
         return currentRandomizationDepth > parameters.getRandomizationDepth();
     }
